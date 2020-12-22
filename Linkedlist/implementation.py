@@ -44,15 +44,45 @@ class LinkedList:
 			temp = temp.next
 			i += 1
 
+	def remove(self,index):
+		current = self.head
+		i = 0
+		if index >= self.length:
+			print("Wrong Index")
+		if index == 0:
+			self.head = self.head.next
+			self.length -= 1
+
+		while i < self.length:
+			if i == index-1:
+				current.next = current.next.next
+				self.length -= 1
+				break
+			i += 1
+			current = current.next
+
+	def pop(self):
+		current = self.head
+		while(current.next != self.tail):
+			current = current.next
+		current.next = None
+		self.length -= 1
+
 	def printLL(self):
 		current = self.head
 		while current != None:
 			print(current.data, end=' ')
 			current = current.next
+		print()
 
 MyLL = LinkedList()
 MyLL.append(10)
 MyLL.append(20)
-MyLL.append(30)
-MyLL.insert(2,40)
+MyLL.append(40)
+MyLL.prepend(5)
+MyLL.printLL()
+MyLL.insert(2,30)
+MyLL.printLL()
+MyLL.remove(2)
+MyLL.pop()
 MyLL.printLL()
