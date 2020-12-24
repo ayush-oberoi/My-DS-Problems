@@ -75,6 +75,20 @@ class LinkedList:
 			current = current.next
 		print()
 
+	def reverse(self):
+		if self.head.next == None:
+			return
+		first = self.head
+		second = first.next
+		while(second != None):
+			temp = second.next
+			second.next = first
+			first = second
+			second = temp
+		self.head.next = None
+		self.head = first
+
+
 MyLL = LinkedList()
 MyLL.append(10)
 MyLL.append(20)
@@ -85,4 +99,6 @@ MyLL.insert(2,30)
 MyLL.printLL()
 MyLL.remove(2)
 MyLL.pop()
+MyLL.printLL()
+MyLL.reverse()
 MyLL.printLL()
